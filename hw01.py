@@ -28,8 +28,7 @@ for flat in flats_list:
     subway_dict.setdefault(subway, [])
 
     # TODO 1: добавьте код, который генерирует новую структуру данных с информацией о квартире - словарь вместо списка
-    # ваш код...
-    # не забудьте сделать проверку типа и преобразовать то, что можно, в числа
+
     flat_info = {"id": int(flat[0]), "rooms": int(flat[1]), "type": flat[2], "price": int(flat[11])}
     subway_dict[subway].append(flat_info)
 
@@ -43,4 +42,13 @@ for key in subway_dict:
     for flat in flats:
         if flat["type"] == "новостройка":
             count += 1
-    print(str(key) + " " + str(count))
+
+    if key != "":
+        if count == 1:
+            print("Около метро " + str(key) + " - " + str(count) + " новостройка")
+        elif (count % 10 == 2 or count % 10 == 3 or count % 10 == 4) and count // 10 != 1:
+            print("Около метро " + str(key) + " - " + str(count) + " новостройки")
+        else:
+            print("Около метро " + str(key) + " - " + str(count) + " новостроек")
+    else:
+        print("Рядом с " + str(count) + " новостройками отсутствует метро")
